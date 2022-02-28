@@ -7,11 +7,11 @@
 
 `cd /tmp`
 
-`wget -q https://github.com/maltsevvv/install/archive/main.zip`
+`wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip`
 
 `unzip main.zip`
 
-`cd install-main`
+`cd rnspi-install-main`
 
 `sudo sh install.sh`
 
