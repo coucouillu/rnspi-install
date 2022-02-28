@@ -19,7 +19,8 @@ exit 1
 fi
 echo
 
-echo ${BWhite}"Screen Calibrated"${NC}
+echo ${BWhite}"KODI INTERFACE SETTINGS"${NC}
+# Screen Calibrated
 if grep -Fxq 'hdmi_mode=6' '/boot/config.txt' ;then
 	if grep -Fxq '            <description>720x480 (720x480) @ 60.00i - Full Screen</description>' '/home/pi/.kodi/userdata/guisettings.xml' ;then
 		sed -i '
@@ -38,44 +39,35 @@ if grep -Fxq 'hdmi_mode=6' '/boot/config.txt' ;then
 </resolutions>
 ' /home/pi/.kodi/userdata/guisettings.xml
 		sed -i 's/<resolutions \/>/<resolutions>/' /home/pi/.kodi/userdata/guisettings.xml
-		echo ${GREEN}"OK"${NC}
+		echo ${GREEN}"Screen Calibrated"${NC}
 	fi
 else
 	echo ${GREEN}"You selected output Analog Video"${NC}
 fi
-echo
 
-## Disable Screensaver
-echo ${BWhite}"Disable Screensaver"${NC}
+# Disable Screensaver
 sed -i 's/id="screensaver.mode" default="true">screensaver.xbmc.builtin.dim/id="screensaver.mode">/' /home/pi/.kodi/userdata/guisettings.xml
-echo ${GREEN}"OK"${NC}
-echo
+echo ${GREEN}"Disable Screensaver"${NC}
 
-## Enable auto play next video
-echo ${BWhite}"Enable auto play next video"${NC}
+# Enable auto play next video
 sed -i 's/id="videoplayer.autoplaynextitem" default="true">/id="videoplayer.autoplaynextitem">0,1,2,3,4/' /home/pi/.kodi/userdata/guisettings.xml
-echo ${GREEN}"OK"${NC}
-echo
+echo ${GREEN}"Enable auto play next video"${NC}
 
-## volume UP +30.0dB
-echo ${BWhite}"Amplifi volume up to 30.0dB"${NC}
+# Amplifi volume up to 30.0dB
 sed -i 's/volumeamplification>0.000000/volumeamplification>30.000000/' /home/pi/.kodi/userdata/guisettings.xml
-echo ${GREEN}"OK"${NC}
-echo
+echo ${GREEN}"Amplifi volume up to 30.0dB"${NC}
 
-## Enable web-server
-echo ${BWhite}"Enable web-server"${NC}
+# Enable web-server
 sed -i 's/id="services.webserver" default="true">false/id="services.webserver">true/' /home/pi/.kodi/userdata/guisettings.xml
-echo ${GREEN}"OK"${NC}
-echo
+echo ${GREEN}"Enable web-server"${NC}
 
-echo ${BWhite}"HiFiberry-dac"${NC}
+# HiFiberry-dac
 if grep -Fxq 'dtoverlay=hifiberry-dac' '/boot/config.txt' ;then
 	sed -i 's/id="audiooutput.audiodevice" default="true">PI:HDMI/id="audiooutput.audiodevice">ALSA:sysdefault:CARD=sndrpihifiberry/' /home/pi/.kodi/userdata/guisettings.xml
-	echo ${BWhite}"Audio output HiFiberry-dac"${NC}
+	echo ${GREEN}"Audio output HiFiberry-dac"${NC}
 
 else
 	sed -i 's/id="audiooutput.audiodevice" default="true">PI:HDMI/id="audiooutput.audiodevice">ALSA:pulse/' /home/pi/.kodi/userdata/guisettings.xml
 	sed -i 's/id="audiooutput.audiodevice">ALSA:sysdefault:CARD=sndrpihifiberry/id="audiooutput.audiodevice">ALSA:pulse/' /home/pi/.kodi/userdata/guisettings.xml
-	echo ${BWhite}"Audio output Analog 3,5mm"${NC}
+	echo ${GREEN}"Audio output Analog 3,5mm"${NC}
 fi

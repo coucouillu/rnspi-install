@@ -68,7 +68,7 @@ pcm.!default {
   slave.pcm "softvol"
 }
 EOF
-	echo ${GREEN}"Enabled HiFiberry DAC /etc/asound.conf"${NC}
+	echo ${GREEN}"ADD /etc/asound.conf"${NC}
 else
 	if grep -Fxq 'dtoverlay=hifiberry-dac' '/boot/config.txt' ;then
 		rm /etc/asound.conf

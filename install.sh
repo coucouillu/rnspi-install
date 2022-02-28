@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BWhite='\033[1;37m'; RED='\033[0;31m'; GREEN='\033[0;32m'; NC='\033[0m' # color
+BWhite='\033[1;37m'; BBlue='\033[1;34m'; RED='\033[0;31m'; GREEN='\033[0;32m'; NC='\033[0m' # color
 if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 echo
@@ -42,34 +42,29 @@ echo ${BWhite}"Disable service.xbmc.versioncheck"${NC}
 sed -i '/service.xbmc.versioncheck/d' /usr/share/kodi/system/addon-manifest.xml
 echo ${GREEN}"OK"${NC}
 echo
-####
-
+#
 echo ${BWhite}"install can-utils"${NC}
 apt install -y can-utils
 echo ${GREEN}"OK"${NC}
 echo
-####
-
+#
 echo ${BWhite}"install python-pip"${NC}
 apt install -y python-pip
 echo ${GREEN}"OK"${NC}
 echo
-####
-
+#
 echo ${BWhite}"Install python-can"${NC}
 pip install python-can
 echo ${GREEN}"OK"${NC}
 echo
-####
-
+#
 echo ${BWhite}"install usbmount"${NC}
 apt install -y usbmount
 sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
 sed -i 's/FS_MOUNTOPTIONS=""/FS_MOUNTOPTIONS="-fstype=vfat,iocharset=utf8,gid=root,dmask=0002,fmask=0002"/' /etc/usbmount/usbmount.conf
 echo ${GREEN}"OK"${NC}
 echo
-####
-
+#
 echo ${BWhite}"install samba"${NC}
 echo "samba-common samba-common/workgroup string  WORKGROUP" | sudo debconf-set-selections
 echo "samba-common samba-common/dhcp boolean true" | sudo debconf-set-selections
@@ -95,12 +90,13 @@ EOF
 	echo ${GREEN}"OK"${NC}
 fi
 echo
-####
+
 
 #### EDIT /BOOT/CONFIG.TXT
-echo ${BWhite}"Enable MCP2515 CanBus"${NC}
+echo ${BWhite}"EDIT /BOOT/CONFIG.TXT"${NC}
+# Enable MCP2515 CanBus
 if grep -Fxq 'dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25' '/boot/config.txt'; then
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"Enable MCP2515 CanBus"${NC}
 else
 	cat <<'EOF' >> /boot/config.txt
 
@@ -109,37 +105,40 @@ dtparam=spi=on
 dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
 dtoverlay=spi-bcm2835-overlay
 EOF
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"Enable MCP2515 CanBus"${NC}
 fi
-####
-echo ${BWhite}"GPU 128MB"${NC}
+
+# GPU 128MB
 if grep -Fxq 'gpu_mem=128' '/boot/config.txt'; then
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"GPU 128MB"${NC}
 else
 	cat <<'EOF' >> /boot/config.txt
 
 gpu_mem=128
 EOF
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"GPU 128MB"${NC}
 fi
-####
+
+# Enable MPEG codec
 if grep -Fxq 'start_x=1' '/boot/config.txt'; then
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"Enable MPEG codec"${NC}
 else
 	cat <<'EOF' >> /boot/config.txt
 
 start_x=1
 EOF
-	echo ${GREEN}"OK"${NC}
+	echo ${GREEN}"Enable MPEG codec"${NC}
 fi
+echo
 
-echo ${GREEN}"Installing components"${NC}
+echo ${BBlue}"Installing components"${NC}
 sh install-bluetoothe.sh
 sh video-output.sh
 sh install-skin.sh
 sh enable-hifiberry.sh
 sh settings-kodi.sh
 
+echo
 echo -n ${BWhite}"Reboot System Now ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
