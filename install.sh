@@ -3,7 +3,6 @@
 BWhite='\033[1;37m'; BBlue='\033[1;34m'; RED='\033[0;31m'; GREEN='\033[0;32m'; NC='\033[0m' # color
 if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
-echo
 
 echo ${BWhite}"Сhecking the internet connection"${NC}
 echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
@@ -38,9 +37,8 @@ systemctl start kodi.service
 echo ${GREEN}"OK"${NC}
 echo
 # disable service.xbmc.versioncheck #
-echo ${BWhite}"Disable service.xbmc.versioncheck"${NC}
 sed -i '/service.xbmc.versioncheck/d' /usr/share/kodi/system/addon-manifest.xml
-echo ${GREEN}"OK"${NC}
+echo ${GREEN}"Disable service.xbmc.versioncheck"${NC}
 echo
 #
 echo ${BWhite}"install can-utils"${NC}
@@ -137,8 +135,8 @@ sh video-output.sh
 sh install-skin.sh
 sh enable-hifiberry.sh
 sh settings-kodi.sh
-
 echo
+
 echo -n ${BWhite}"Reboot System Now ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then

@@ -1,24 +1,21 @@
 #!/bin/bash
 
+# sudo sh install-skin.sh
 BWhite='\033[1;37m'; RED='\033[0;31m'; GREEN='\033[0;32m'; NC='\033[0m' # color
 if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
-echo
 
-#systemctl stop kodi.service
-sleep 5
-		
-echo ${BWhite}"stop kodi.service"${NC}
 if (systemctl -q is-active kodi.service); then
+	echo ${BWhite}"stop kodi (10sec.)"${NC}
 	systemctl stop kodi.service
 	sleep 10
 elif (systemctl -q is-active kodi.service); then
+	echo ${BWhite}"stop kodi (+10sec.)"${NC}
 	systemctl stop kodi.service
 	sleep 10
 exit 1
 fi
 echo
-
 
 echo ${BWhite}"Check file on SD card in /boot/ SKIN.RNSD or SKIN.RNSE"${NC}
 if [ -e /boot/skin.rnsd.zip ]
@@ -66,6 +63,10 @@ WantedBy=multi-user.target
 EOF
 		systemctl enable tvtuner.service
 		echo ${GREEN}"TV-TUNER FOR RNSD INSTALLED"${NC}
+	else
+		systemctl stop tvtuner.service
+		systemctl disable tvtuner.service
+		rm /etc/systemd/system/tvtuner.service
 	fi
 # install skin.rnse
 elif [ -e /boot/skin.rnse.zip ] ; then
@@ -77,4 +78,3 @@ elif [ -e /boot/skin.rnse.zip ] ; then
 	echo ${GREEN}"SKIN.RNSE INSTALLED BY DEFAULT"${NC}
 	echo
 fi
-echo
