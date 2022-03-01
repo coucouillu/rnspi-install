@@ -30,3 +30,5 @@
 Request PIN code
 
 [agent] Enter PIN code: `1234`
+
+`exit`
