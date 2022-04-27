@@ -12,7 +12,7 @@ echo
 ####
 
 echo ${BWhite}"Check file on SD card in /boot/ skin.rnsd.zip or skin.rnse.zip"${NC}
-if [ -e /boot/skin.rnsd.zip ]; then echo ${GREEN}"OK"${NC}; elif [ -e /boot/skin.rnse.zip ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"SKIN not found"${NC}; exit 0$
+if [ -e /boot/skin.rnsd.zip ]; then echo ${GREEN}"OK"${NC}; elif [ -e /boot/skin.rnse.zip ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"SKIN not found"${NC}; exit 0; fi
 echo
 ####
 
