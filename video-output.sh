@@ -17,28 +17,46 @@ exit 1
 fi
 echo
 
-# HDMI to VGA adapter
+# HDMI to VGA adapter for RNS
 echo -n ${BWhite}"Use HDMI to VGA adapter ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Y|y]}" ]; then
-	sed -i 's/#overscan_left=16/overscan_left=31/' /boot/config.txt
-	sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
-	sed -i 's/#hdmi_group=1/hdmi_group=1/' /boot/config.txt
-	sed -i 's/#hdmi_mode=1/hdmi_mode=6/' /boot/config.txt
-	if grep -Fxq 'hdmi_drive=2' '/boot/config.txt'; then
-		sed -i 's/hdmi_drive=2/#hdmi_drive=2/' /boot/config.txt
-	elif grep -Fxq 'hdmi_drive=6' '/boot/config.txt'; then
-		sed -i 's/#hdmi_mode=6/hdmi_mode=6/' /boot/config.txt
+	if grep -Fxq '# HDMI to VGA adapter for RNS' '/boot/config.txt'; then
+		echo
+	else
+		cat <<'EOF' >> /boot/config.txt
+# HDMI to VGA adapter for RNS
+hdmi_ignore_edid=0xa5000080
+hdmi_group=2
+hdmi_mode=87
+hdmi_timings 800 0 51 44 121 460 0 10 9 14 0 0 0 32 1 16000000 3
+framebuffer_width=400
+framebuffer_height=230
+EOF
+		sed -i 's/#disable_overscan=1/disable_overscan=1/' /boot/config.txt
+		echo -n ${BWhite}"Use Raspberry PI4 ?  yes / no "${NC}
+		read answer
+		if [ "$answer" != "${answer#[Y|y]}" ]; then
+			if grep -Fxq 'enable_tvout=0' '/boot/config.txt'; then
+				echo
+			else
+				cat <<'EOF' >> /boot/config.txt
+enable_tvout=0
+EOF
+			fi
+		fi
 	fi
-
+	
 else
-	sed -i 's/overscan_left=31/#overscan_left=16/' /boot/config.txt
-	sed -i 's/hdmi_force_hotplug=1/#hdmi_force_hotplug=1/' /boot/config.txt
-	sed -i 's/hdmi_group=1/#hdmi_group=1/' /boot/config.txt
-	sed -i 's/hdmi_mode=6/#hdmi_mode=1/' /boot/config.txt
-	sed -i 's/#hdmi_drive=2/hdmi_drive=2/' /boot/config.txt
-	if grep -Fxq 'enable_tvout=0/' '/boot/config.txt'; then
-		sed -i 's/enable_tvout=0/#enable_tvout=0/' /boot/config.txt
+	if grep -Fxq '# HDMI to VGA adapter for RNS' '/boot/config.txt'; then
+		sed -i '/# HDMI to VGA adapter for RNS/d' /boot/config.txt
+		sed -i '/hdmi_ignore_edid=0xa5000080/d' /boot/config.txt
+		sed -i '/hdmi_group=2/d' /boot/config.txt
+		sed -i '/hdmi_mode=87/d' /boot/config.txt
+		sed -i '/hdmi_timings 800 0 51 44 121 460 0 10 9 14 0 0 0 32 1 16000000 3/d' /boot/config.txt
+		sed -i '/framebuffer_width=400/d' /boot/config.txt
+		sed -i '/framebuffer_height=230/d' /boot/config.txt
+		sed -i '/enable_tvout=0/d' /boot/config.txt
+		sed -i 's/disable_overscan=1/#disable_overscan=1/' /boot/config.txt
 	fi
 fi
-
