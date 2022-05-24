@@ -17,31 +17,31 @@ exit 1
 fi
 echo
 
-echo ${BWhite}"KODI INTERFACE SETTINGS"${NC}
+#echo ${BWhite}"KODI INTERFACE SETTINGS"${NC}
 # Screen Calibrated
-if grep -Fxq 'hdmi_mode=6' '/boot/config.txt' ;then
-	if grep -Fxq '            <description>720x480 (720x480) @ 60.00i - Full Screen</description>' '/home/pi/.kodi/userdata/guisettings.xml' ;then
-		sed -i '
-/<resolutions \/>/a\
-<resolution>\
-<description>720x480 (720x480) @ 60.00i - Full Screen</description>\
-<subtitles>463</subtitles>\
-<pixelratio>0.888889</pixelratio>\
-<overscan>\
-	<left>24</left>\
-	<top>-2</top>\
-	<right>721</right>\
-	<bottom>475</bottom>\
-</overscan>\
-</resolution>\
-</resolutions>
-' /home/pi/.kodi/userdata/guisettings.xml
-		sed -i 's/<resolutions \/>/<resolutions>/' /home/pi/.kodi/userdata/guisettings.xml
-		echo ${GREEN}"Screen Calibrated"${NC}
-	fi
-else
-	echo ${GREEN}"You selected output Analog Video"${NC}
-fi
+#if grep -Fxq 'hdmi_mode=6' '/boot/config.txt' ;then
+#	if grep -Fxq '            <description>720x480 (720x480) @ 60.00i - Full Screen</description>' '/home/pi/.kodi/userdata/guisettings.xml' ;then
+#		sed -i '
+#/<resolutions \/>/a\
+#<resolution>\
+#<description>720x480 (720x480) @ 60.00i - Full Screen</description>\
+#<subtitles>463</subtitles>\
+#<pixelratio>0.888889</pixelratio>\
+#<overscan>\
+#	<left>24</left>\
+#	<top>-2</top>\
+#	<right>721</right>\
+#	<bottom>475</bottom>\
+#</overscan>\
+#</resolution>\
+#</resolutions>
+#' /home/pi/.kodi/userdata/guisettings.xml
+#		sed -i 's/<resolutions \/>/<resolutions>/' /home/pi/.kodi/userdata/guisettings.xml
+#		echo ${GREEN}"Screen Calibrated"${NC}
+#	fi
+#else
+#	echo ${GREEN}"You selected output Analog Video"${NC}
+#fi
 
 # Disable Screensaver
 sed -i 's/id="screensaver.mode" default="true">screensaver.xbmc.builtin.dim/id="screensaver.mode">/' /home/pi/.kodi/userdata/guisettings.xml
