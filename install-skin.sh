@@ -18,11 +18,9 @@ fi
 echo
 
 echo ${BWhite}"Check file on SD card in /boot/ SKIN.RNSD or SKIN.RNSE"${NC}
-if [ -e /boot/skin.rnsd.zip ]
-then
+if [ -e /boot/skin.rnsd.zip ]; then
 	echo ${GREEN}"FOUND SKIN.RNS-D"${NC}
-elif [ -e /boot/skin.rnse.zip ]
-then
+elif [ -e /boot/skin.rnse.zip ]; then
 	echo ${GREEN}"FOUND SKIN.RNS-E"${NC}
 else 
 	echo ${RED}"SKIN not found"${NC}

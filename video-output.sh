@@ -21,6 +21,9 @@ echo
 echo -n ${BWhite}"Use HDMI to VGA adapter ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Y|y]}" ]; then
+	if grep -Fxq 'sdtv_mode=2' '/boot/config.txt'; then
+		sed -i 's/sdtv_mode=2/#sdtv_mode=2/' /boot/config.txt
+	fi
 	if grep -Fxq '# HDMI to VGA adapter for RNS' '/boot/config.txt'; then
 		echo
 	else
@@ -48,6 +51,9 @@ EOF
 	fi
 	
 else
+	if grep -Fxq '#sdtv_mode=2' '/boot/config.txt'; then
+		sed -i 's/#sdtv_mode=2/sdtv_mode=2/' /boot/config.txt
+	fi
 	if grep -Fxq '# HDMI to VGA adapter for RNS' '/boot/config.txt'; then
 		sed -i '/# HDMI to VGA adapter for RNS/d' /boot/config.txt
 		sed -i '/hdmi_ignore_edid=0xa5000080/d' /boot/config.txt
