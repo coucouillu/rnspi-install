@@ -37,6 +37,7 @@ framebuffer_width=400
 framebuffer_height=230
 EOF
 		sed -i 's/#disable_overscan=1/disable_overscan=1/' /boot/config.txt
+		sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
 		echo -n ${BWhite}"Use Raspberry PI4 ?  yes / no "${NC}
 		read answer
 		if [ "$answer" != "${answer#[Y|y]}" ]; then
@@ -64,5 +65,6 @@ else
 		sed -i '/framebuffer_height=230/d' /boot/config.txt
 		sed -i '/enable_tvout=0/d' /boot/config.txt
 		sed -i 's/disable_overscan=1/#disable_overscan=1/' /boot/config.txt
+		sed -i 's/hdmi_force_hotplug=1/#hdmi_force_hotplug=1/' /boot/config.txt
 	fi
 fi
