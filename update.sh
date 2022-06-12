@@ -34,7 +34,7 @@ echo
 		echo ${GREEN}"found skin.rnsd"${NC}
 		unzip ~/skin.rnsd-main.zip -d /tmp/
 		mv /tmp/skin.rnsd-main /tmp/skin.rnsd
-		rm -r /home/pi/kodi/addons/skin.rnsd
+		rm -r /home/pi/.kodi/addons/skin.rnsd
 		cp /tmp/skin.rnsd -r /home/pi/kodi/addons/
 		
 		
@@ -42,7 +42,7 @@ echo
 		echo ${GREEN}"found skin.rnse"${NC}
 		unzip ~/skin.rnse-main.zip -d /tmp/
 		mv /tmp/skin.rnse-main /tmp/skin.rnse
-		rm -r /home/pi/kodi/addons/skin.rnse
+		rm -r /home/pi/.kodi/addons/skin.rnse
 		cp /tmp/skin.rnse -r /home/pi/kodi/addons/
 	fi	
 	
