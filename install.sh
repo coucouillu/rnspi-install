@@ -70,11 +70,6 @@ echo
 # apt install -y usbmount
 # sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
 # sed -i 's/FS_MOUNTOPTIONS=""/FS_MOUNTOPTIONS="-fstype=vfat,iocharset=utf8,gid=root,dmask=0002,fmask=0002"/' /etc/usbmount/usbmount.conf
-echo ${BWhite}"install automount usb"${NC}
-cd udev-media-automount
-sudo make install
-echo ${GREEN}"OK"${NC}
-echo
 #
 echo ${BWhite}"install samba"${NC}
 echo "samba-common samba-common/workgroup string  WORKGROUP" | sudo debconf-set-selections
@@ -150,6 +145,13 @@ sh enable-hifiberry.sh
 sh settings-kodi.sh
 echo
 
+# automount usb
+echo ${BWhite}"install automount usb"${NC}
+cd udev-media-automount
+sudo make install
+echo ${GREEN}"OK"${NC}
+echo
+#
 echo -n ${BWhite}"Reboot System Now ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
