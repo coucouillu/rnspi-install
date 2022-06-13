@@ -50,12 +50,12 @@ if [ -e /boot/skin.rnsd-main.zip ] ; then
 	echo ${GREEN}"SKIN.RNSD INSTALLED BY DEFAULT"${NC}
 	echo
 # install tvtuner
-	echo -n ${BWhite}"EMULATE TV-TUNER 4BO919146B FOR RNSD ? yes / no "${NC}
+	echo -n ${BWhite}"EMULATE TV-TUNER 4DO919146B FOR RNSD ? yes / no "${NC}
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		cat <<'EOF' > /etc/systemd/system/tvtuner.service
 [Unit]
-Description=Emulation tv-tuner 4BO919146B
+Description=Emulation tv-tuner 4DO919146B
 [Service]
 Type=simple
 ExecStart=/usr/bin/python /home/pi/.kodi/addons/skin.rnsd/tvtuner.pyo
