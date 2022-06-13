@@ -16,10 +16,17 @@ if [ $? -eq 0 ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"NOT internet conn
 echo
 ####
 
-echo ${BWhite}"Check file on SD card in /boot/ skin.rnsd.zip or skin.rnse.zip"${NC}
-if [ -e /boot/skin.rnsd-main.zip ]; then echo ${GREEN}"OK"${NC}; elif [ -e /boot/skin.rnse-main.zip ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"SKIN not found"${NC}; exit 0; fi
-echo
-####
+echo ${BWhite}"Check file on SD card in /boot/ SKIN.RNSD or SKIN.RNSE"${NC}
+if [ -e /boot/skin.rnsd-main.zip ]; then
+	echo ${GREEN}"FOUND SKIN.RNS-D"${NC}
+elif [ -e /boot/skin.rnse-main.zip ]; then
+	echo ${GREEN}"FOUND SKIN.RNS-E"${NC}
+else 
+	echo ${RED}"SKIN not found"${NC}
+	echo ${RED}"Name should be skin.rnsd-main.zip"${NC}
+	echo ${RED}"Name should be skin.rnse-main.zip"${NC}
+	exit 0
+fi
 
 echo ${BWhite}"update system"${NC}
 apt update -y
