@@ -67,9 +67,11 @@ echo ${GREEN}"OK"${NC}
 echo
 #
 echo ${BWhite}"install usbmount"${NC}
-apt install -y usbmount
-sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
-sed -i 's/FS_MOUNTOPTIONS=""/FS_MOUNTOPTIONS="-fstype=vfat,iocharset=utf8,gid=root,dmask=0002,fmask=0002"/' /etc/usbmount/usbmount.conf
+# apt install -y usbmount
+# sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
+# sed -i 's/FS_MOUNTOPTIONS=""/FS_MOUNTOPTIONS="-fstype=vfat,iocharset=utf8,gid=root,dmask=0002,fmask=0002"/' /etc/usbmount/usbmount.conf
+cd udev-media-automount
+sudo make install
 echo ${GREEN}"OK"${NC}
 echo
 #
