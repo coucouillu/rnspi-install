@@ -1,6 +1,4 @@
-## Установка и настройка ПО для Audi Navigation Plus RNS-D и RNS-E (RNSPI)
-
-## Обложка в стиле Audi Navigation RNS
+## Установка ПО для Audi Navigation Plus RNS-D и RNS-E (RNSPI)
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnsd.png)
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnse.png)
 
