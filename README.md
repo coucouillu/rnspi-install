@@ -1,5 +1,10 @@
 ## Установка и настройка ПО для Audi Navigation Plus RNS-D и RNS-E (RNSPI)
 
+## Обложка в стиле Audi Navigation RNS
+![prototype scheme](https://github.com/maltsevvv/skin.rnsd/blob/main/img/rnsd.png)
+![prototype scheme](https://github.com/maltsevvv/skin.rnsd/blob/main/img/rnse.png)
+
+
 1. Записать на sd-карту с образом Raspbian Buster Lite
 2. Cкопировать `skin.rnsd-main.zip` или `skin.rnse-main.zip` на sd-карту в /boot/
 
@@ -25,7 +30,7 @@ Request PIN code
 
 
 
-### Manual Install
+## Manual Install
 #### edit /boot/config.txt  
 `sudo nano /boot/config.txt`
 ```
