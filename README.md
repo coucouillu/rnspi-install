@@ -1,8 +1,8 @@
 ## Установка и настройка ПО для Audi Navigation Plus RNS-D и RNS-E (RNSPI)
 
 ## Обложка в стиле Audi Navigation RNS
-![prototype scheme](https://github.com/maltsevvv/skin.rnsd/blob/main/img/rnsd.png)
-![prototype scheme](https://github.com/maltsevvv/skin.rnsd/blob/main/img/rnse.png)
+![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnsd.png)
+![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnse.png)
 
 
 1. Записать на sd-карту с образом Raspbian Buster Lite
