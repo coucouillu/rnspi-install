@@ -18,43 +18,43 @@ fi
 echo
 
 # Add sources /home/pi/movies/ & /home/pi/music/
-if grep -Fxq '            <path pathversion="1">/home/pi/movies/</path>' '/home/pi/.kodi/userdata/sources.xml'; then
-	echo
-else
-	cat <<'EOF' >> /home/pi/.kodi/userdata/sources.xml
-<sources>
-    <programs>
-        <default pathversion="1"></default>
-    </programs>
-    <video>
-        <default pathversion="1"></default>
-        <source>
-            <name>movies</name>
-            <path pathversion="1">/home/pi/movies/</path>
-            <allowsharing>true</allowsharing>
-        </source>
-    </video>
-    <music>
-        <default pathversion="1"></default>
-        <source>
-            <name>music</name>
-            <path pathversion="1">/home/pi/music/</path>
-            <allowsharing>true</allowsharing>
-        </source>
-    </music>
-    <pictures>
-        <default pathversion="1"></default>
-    </pictures>
-    <files>
-        <default pathversion="1"></default>
-    </files>
-    <games>
-        <default pathversion="1"></default>
-    </games>
-</sources>
-EOF
-fi
-echo ${GREEN}"Add sources /home/pi/movies/ & /home/pi/music/"${NC}
+#if grep -Fxq '            <path pathversion="1">/home/pi/movies/</path>' '/home/pi/.kodi/userdata/sources.xml'; then
+#	echo
+#else
+#	cat <<'EOF' >> /home/pi/.kodi/userdata/sources.xml
+#<sources>
+#    <programs>
+#        <default pathversion="1"></default>
+#    </programs>
+#    <video>
+#        <default pathversion="1"></default>
+#        <source>
+#            <name>movies</name>
+#            <path pathversion="1">/home/pi/movies/</path>
+#            <allowsharing>true</allowsharing>
+#        </source>
+#    </video>
+#    <music>
+#        <default pathversion="1"></default>
+#        <source>
+#            <name>music</name>
+#            <path pathversion="1">/home/pi/music/</path>
+#            <allowsharing>true</allowsharing>
+#        </source>
+#    </music>
+#    <pictures>
+#        <default pathversion="1"></default>
+#    </pictures>
+#    <files>
+#        <default pathversion="1"></default>
+#    </files>
+#    <games>
+#        <default pathversion="1"></default>
+#    </games>
+#</sources>
+#EOF
+#fi
+#echo ${GREEN}"Add sources /home/pi/movies/ & /home/pi/music/"${NC}
 
 # Disable Screensaver
 sed -i 's/id="screensaver.mode" default="true">screensaver.xbmc.builtin.dim/id="screensaver.mode">/' /home/pi/.kodi/userdata/guisettings.xml
