@@ -81,4 +81,13 @@ elif [ -e /boot/skin.rnse-main.zip ] ; then
 	sed -i 's/lookandfeel.skin" default="true">skin.estuary/lookandfeel.skin">skin.rnse/' /home/pi/.kodi/userdata/guisettings.xml
 	echo ${GREEN}"SKIN.RNSE INSTALLED BY DEFAULT"${NC}
 	echo
+# install tvtuner for rnse
+	echo -n ${BWhite}"EMULATE TV-TUNER FOR RNSE ? yes / no "${NC}
+	read answer
+	if [ "$answer" != "${answer#[Yy]}" ] ;then
+		sed -i 's/from dumpcan import dumpcan/from dumpcan2 import dumpcan/' /home/pi/.kodi/addons/skin.rnse/addon.py
+		echo ${GREEN}"TV-TUNER FOR RNSE INSTALLED"${NC}
+	else
+		sed -i 's/from dumpcan2 import dumpcan/from dumpcan import dumpcan/' /home/pi/.kodi/addons/skin.rnse/addon.py
+	fi
 fi
