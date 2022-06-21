@@ -128,32 +128,23 @@ def dumpcan():
                         select = 0
                     else:
                         select += 1
-                elif msg == '373004002000': #R.Encoder.Right
+                elif msg == '373004002000' or msg == '373001002001': #R.Encoder.Right
                     if down == 5:
                         xbmc.executebuiltin('Action(Down)')
                         down = 0
                     else:
                         down += 1
-                elif msg == '373004004000': #R.Encoder.Left
+                elif msg == '373004004000' or msg == '373001004001': #R.Encoder.Left
                     if up == 5:
                         xbmc.executebuiltin('Action(Up)')
                         up = 0
                     else:
                         up += 1
-                # elif msg == '373001004001': #left
-                    # if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        # xbmc.executebuiltin('PlayerControl(BigSkipBackward)')
-                    # elif xbmc.getCondVisibility('Player.HasAudio'):
-                        # xbmc.executebuiltin('PlayerControl(BigSkipBackward)')
-                    # else:
-                        # xbmc.executebuiltin('Action(Left)')
-                # elif msg == '373001002001': #Right
-                    # if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        # xbmc.executebuiltin('PlayerControl(BigSkipForward)')
-                    # elif xbmc.getCondVisibility('Player.HasAudio'):
-                        # xbmc.executebuiltin('PlayerControl(BigSkipForward)')
-                    # else:
-                        # xbmc.executebuiltin('Action(Right)')
+################ POWER OFF               
+            elif canid == '271':
+                if msg[0:2] == '10' or msg[0:2] == '00':
+                    #os.system('sudo halt')
+                    os.system('sudo reboot')
 ################ MFSW 5C0
             elif canid == '5C0':
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
@@ -183,6 +174,7 @@ def dumpcan():
 ################ MFSW 5C3
             elif canid == '5C3':
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
+
 ################ canbus info
             elif canid == '218':
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
