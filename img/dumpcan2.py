@@ -141,10 +141,10 @@ def dumpcan():
                     else:
                         up += 1
 ################ POWER OFF               
-            elif canid == '271':
-                if msg[0:2] == '10' or msg[0:2] == '00':
-                    #os.system('sudo halt')
-                    os.system('sudo reboot')
+            #elif canid == '271' and msg[0:2] == '10' or msg[0:2] == '00':
+            elif canid == '271' and msg == '11':
+				#os.system('sudo halt')
+                os.system('sudo reboot')
 ################ MFSW 5C0
             elif canid == '5C0':
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
