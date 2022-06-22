@@ -17,30 +17,46 @@ exit 1
 fi
 echo
 
-#Add sources /home/pi/video/
+# Add sources /home/pi/movies/ & /home/pi/music/
 if grep -Fxq '            <path pathversion="1">/home/pi/movies/</path>' '/home/pi/.kodi/userdata/sources.xml'; then
 	echo
 else
-	sed -i 's/<video>/<video>\
-        <source>\
-            <name>movies<\/name>\
-            <path pathversion="1">\/home\/pi\/movies\/<\/path>\
-            <allowsharing>true<\/allowsharing>\
-        <\/source>/' /home/pi/.kodi/userdata/sources.xml
+	cat <<'EOF' >> /home/pi/.kodi/userdata/sources.xml
+<sources>
+   <programs>
+       <default pathversion="1"></default>
+   </programs>
+   <video>
+       <default pathversion="1"></default>
+       <source>
+           <name>movies</name>
+           <path pathversion="1">/home/pi/movies/</path>
+           <allowsharing>true</allowsharing>
+       </source>
+   </video>
+   <music>
+       <default pathversion="1"></default>
+       <source>
+           <name>music</name>
+           <path pathversion="1">/home/pi/music/</path>
+           <allowsharing>true</allowsharing>
+       </source>
+   </music>
+   <pictures>
+       <default pathversion="1"></default>
+   </pictures>
+   <files>
+       <default pathversion="1"></default>
+   </files>
+   <games>
+       <default pathversion="1"></default>
+   </games>
+</sources>
+EOF
+
+sudo chown pi:pi /home/pi/.kodi/userdata/sources.xml
 fi
 echo ${GREEN}"Add sources /home/pi/movies/"${NC}
-
-#Add sources /home/pi/music/
-if grep -Fxq '            <path pathversion="1">/home/pi/music/</path>' '/home/pi/.kodi/userdata/sources.xml'; then
-	echo
-else
-	sed -i 's/<music>/<music>\
-        <source>\
-            <name>music<\/name>\
-            <path pathversion="1">\/home\/pi\/music\/<\/path>\
-            <allowsharing>true<\/allowsharing>\
-        <\/source>/' /home/pi/.kodi/userdata/sources.xml
-fi
 echo ${GREEN}"Add sources /home/pi/music/"${NC}
 
 # Disable Screensaver
