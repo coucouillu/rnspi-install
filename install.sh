@@ -150,6 +150,7 @@ sh video-output.sh
 sh install-skin.sh
 sh enable-hifiberry.sh
 sh settings-kodi.sh
+sh install_overlayfs.sh
 echo
 
 # automount usb
