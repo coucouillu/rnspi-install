@@ -40,26 +40,26 @@ def dumpcan():
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
                 if msg == '373001400000': #LEFT_UP - up
                     if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        if up == 5:
+                        if up == 1:
                             xbmc.executebuiltin('PlayerControl(BigSkipForward)')
                             up = 0
                         else:
                             up += 1
                     else:
-                        if up == 5:
+                        if up == 1:
                             xbmc.executebuiltin('Action(Up)')
                             up = 0
                         else:
                             up += 1
                 elif msg == '373001800000': #LEFT_DOWN - down
                     if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        if down == 5:
+                        if down == 1:
                             xbmc.executebuiltin('PlayerControl(BigSkipBackward)')
                             down = 0
                         else:
                             down += 1
                     else:
-                        if down == 5:
+                        if down == 1:
                             xbmc.executebuiltin('Action(Down)')
                             down = 0
                         else:
@@ -67,63 +67,63 @@ def dumpcan():
                             
                 elif msg == '373001010000' or msg == '373004000100': #PREVIOUS - left
                     if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        if left == 5:
+                        if left == 1:
                             xbmc.executebuiltin('PlayerControl(BigSkipBackward)')
                             left = 0
                         else:
                             left += 1
                     elif xbmc.getCondVisibility('Player.HasAudio'):
-                        if left == 5:
+                        if left == 1:
                             xbmc.executebuiltin('XBMC.PlayerControl(Previous)')
                             left = 0
                         else:
                             left += 1
                     else:
-                        if left == 5:
+                        if left == 1:
                             xbmc.executebuiltin('Action(Left)')
                             left = 0
                         else:
                             left += 1
-                elif msg == '373001020000': #NEXT - right
+                elif msg == '373004004000': #NEXT - right
                     if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        if right == 5:
+                        if right == 1:
                             xbmc.executebuiltin('PlayerControl(BigSkipForward)')
                             right = 0
                         else:
                             right += 1
                     elif xbmc.getCondVisibility('Player.HasAudio'):
-                        if right == 5:
+                        if right == 1:
                             xbmc.executebuiltin('XBMC.PlayerControl(Next)')
                             right = 0
                         else:
                             right += 1
                     else:
-                        if rigth == 5:
+                        if right == 1:
                             xbmc.executebuiltin('Action(Right)')
                             right = 0
                         else:
                             right += 1
                 elif msg == '373001000200': #RETURN
-                    if back == 5:
+                    if back == 1:
                         xbmc.executebuiltin('Action(Back)')
                         back = 0
                     else:
                         back += 1
                 elif msg == '373001000100': #SETUP
                     if xbmc.getCondVisibility('VideoPlayer.IsFullscreen'):
-                        if setup == 5:
+                        if setup == 1:
                             xbmc.executebuiltin('Action(OSD)')
                             setup = 0
                         else:
                             setup += 1
                     else:
-                        if setup == 5:
+                        if setup == 1:
                             xbmc.executebuiltin('Action(ContextMenu)')
                             setup = 0
                         else:
                             setup += 1
                 elif msg== '373001001000': #R.Encoder.Press
-                    if select == 5:
+                    if select == 1:
                         xbmc.executebuiltin('Action(Select)')
                         select = 0
                     else:
@@ -141,10 +141,10 @@ def dumpcan():
                     else:
                         up += 1
 ################ POWER OFF               
-            #elif canid == '271' and msg[0:2] == '10' or msg[0:2] == '00':
-            elif canid == '271' and msg == '11':
-				#os.system('sudo halt')
-                os.system('sudo reboot')
+            # #elif canid == '271' and msg[0:2] == '10' or msg[0:2] == '00':
+            # elif canid == '271' and msg == '11':
+				# #os.system('sudo halt')
+                # os.system('sudo reboot')
 ################ MFSW 5C0
             elif canid == '5C0':
                 xbmcgui.Window(10000).setProperty(canid, str(msg))
