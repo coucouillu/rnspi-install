@@ -170,8 +170,7 @@ sed -i '
 `sudo raspi-config --enable-overlayfs`  
 `sudo raspi-config --disable-overlayfs`
 
-#### подключение 2 canbus 2
-#### edit /boot/config.txt  
+#### Подключение canbus2 can1
 `sudo nano /boot/config.txt`
 ```
 # Enable MCP2515 can1
@@ -181,8 +180,8 @@ dtoverlay=spi1-1cs,cs0_pin=16
 dtoverlay=mcp2515,spi1-0,oscillator=8000000,interrupt=12
 ```
 
-int : GPIO12
-sck : GPIO21
-si  : GPIO20
-so  : GPIO19
-cs  : GPIO16
+int : GPIO12  
+sck : GPIO21  
+si  : GPIO20  
+so  : GPIO19  
+cs  : GPIO16  
