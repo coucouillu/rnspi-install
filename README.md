@@ -46,7 +46,7 @@ hdmi_timings 800 0 51 44 121 460 0 10 9 14 0 0 0 32 1 16000000 3
 framebuffer_width=400
 framebuffer_height=230
 
-# Enable MCP2515 CanBus
+# Enable MCP2515 can0
 dtparam=spi=on
 dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
 dtoverlay=spi-bcm2835-overlay
@@ -169,3 +169,20 @@ sed -i '
 #### Для запуска
 `sudo raspi-config --enable-overlayfs`  
 `sudo raspi-config --disable-overlayfs`
+
+#### подключение 2 canbus 2
+#### edit /boot/config.txt  
+`sudo nano /boot/config.txt`
+```
+# Enable MCP2515 can1
+# cd /boot/overlays
+# wget https://github.com/maltsevvv/rnspi-install/raw/main/img/mcp2515-can1-0.dtbo
+dtoverlay=spi1-1cs,cs0_pin=16
+dtoverlay=mcp2515,spi1-0,oscillator=8000000,interrupt=12
+```
+
+int : GPIO12
+sck : GPIO21
+si  : GPIO20
+so  : GPIO19
+cs  : GPIO16
