@@ -49,7 +49,7 @@ if [ -e /boot/skin.rnsd-main.zip ] ; then
 	sed -i 's/lookandfeel.skin" default="true">skin.estuary/lookandfeel.skin">skin.rnsd/' /home/pi/.kodi/userdata/guisettings.xml
 	echo ${GREEN}"SKIN.RNSD INSTALLED BY DEFAULT"${NC}
 	echo
-# install tvtuner
+# install tvtuner for rnsd
 	echo -n ${BWhite}"EMULATE TV-TUNER 4DO919146B FOR RNSD ? yes / no "${NC}
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
@@ -81,13 +81,25 @@ elif [ -e /boot/skin.rnse-main.zip ] ; then
 	sed -i 's/lookandfeel.skin" default="true">skin.estuary/lookandfeel.skin">skin.rnse/' /home/pi/.kodi/userdata/guisettings.xml
 	echo ${GREEN}"SKIN.RNSE INSTALLED BY DEFAULT"${NC}
 	echo
-# install tvtuner for rnse
+# install tvtuner for rnsd
 	echo -n ${BWhite}"EMULATE TV-TUNER FOR RNSE ? yes / no "${NC}
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
-		sed -i 's/from dumpcan import dumpcan/from dumpcan2 import dumpcan/' /home/pi/.kodi/addons/skin.rnse/addon.py
+		cat <<'EOF' > /etc/systemd/system/tvtuner.service
+[Unit]
+Description=Emulation tv-tuner 4DO919146B
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/.kodi/addons/skin.rnse/tvtuner.pyo
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+		systemctl enable tvtuner.service
 		echo ${GREEN}"TV-TUNER FOR RNSE INSTALLED"${NC}
 	else
-		sed -i 's/from dumpcan2 import dumpcan/from dumpcan import dumpcan/' /home/pi/.kodi/addons/skin.rnse/addon.py
+		systemctl stop tvtuner.service
+		systemctl disable tvtuner.service
+		rm /etc/systemd/system/tvtuner.service
 	fi
 fi
