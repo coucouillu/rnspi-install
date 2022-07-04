@@ -81,7 +81,7 @@ else
 	cat <<'EOF' >> /etc/network/interfaces
 auto can0
   iface can0 inet manual
-  pre-up /sbin/ip link set can0 type can bitrate 1000000
+  pre-up /sbin/ip link set can0 type can bitrate 100000
   up /sbin/ifconfig can0 up
   down /sbin/ifconfig can0 down
 EOF
