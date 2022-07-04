@@ -73,6 +73,22 @@ pip install python-can
 echo ${GREEN}"OK"${NC}
 echo
 #
+echo ${BWhite}"Add CAN0 interfaces in upstart"${NC}
+if grep -Fxq 'auto can0' '/etc/network/interfaces'
+then
+	echo ${GREEN}"OK"${NC}
+else
+	cat <<'EOF' >> /etc/network/interfaces
+auto can0
+  iface can0 inet manual
+  pre-up /sbin/ip link set can0 type can bitrate 1000000
+  up /sbin/ifconfig can0 up
+  down /sbin/ifconfig can0 down
+EOF
+	echo ${GREEN}"OK"${NC}
+fi
+echo
+#
 # echo ${BWhite}"install usbmount"${NC}
 # apt install -y usbmount
 # sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
