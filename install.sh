@@ -30,8 +30,8 @@ else
 fi
 
 echo ${BWhite}"update system"${NC}
-###############################apt update -y
-###############################apt upgrade -y
+apt update -y
+apt upgrade -y
 echo
 ####
 
