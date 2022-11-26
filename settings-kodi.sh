@@ -97,12 +97,12 @@ elif grep -Fxq 'dtparam=audio=on' '/boot/config.txt'; then
 	sed -i 's/id="audiooutput.audiodevice" default="true">PI:HDMI/id="audiooutput.audiodevice">PI:Analogue/' /home/pi/.kodi/userdata/guisettings.xml
 	sed -i 's/id="audiooutput.audiodevice">ALSA:sysdefault:CARD=sndrpihifiberry/id="audiooutput.audiodevice">PI:Analogue/' /home/pi/.kodi/userdata/guisettings.xml
 	sed -i 's/id="audiooutput.audiodevice">ALSA:pulse/id="audiooutput.audiodevice">PI:Analogue/' /home/pi/.kodi/userdata/guisettings.xml
-	echo ${GREEN}"Audio output Analog Raspbrry PI 3,5mm"${NC}
+	echo ${GREEN}"Audio output Analog Raspberry PI 3,5mm"${NC}
 	if [ -e /etc/systemd/system/pulseaudio.service ]; then
 		sed -i 's/id="audiooutput.audiodevice">PI:Analogue/id="audiooutput.audiodevice">ALSA:pulse/' /home/pi/.kodi/userdata/guisettings.xml
 		sed -i 's/id="audiooutput.audiodevice">PI:HDMI/id="audiooutput.audiodevice">ALSA:pulse/' /home/pi/.kodi/userdata/guisettings.xml
 		sed -i 's/id="audiooutput.audiodevice">ALSA:sysdefault:CARD=sndrpihifiberry/id="audiooutput.audiodevice">ALSA:pulse/' /home/pi/.kodi/userdata/guisettings.xml
-		echo ${GREEN}"Audio output Analog Raspbrry PI 3,5mm and Bluetoothe reciever (ALSA:pulse)"${NC}
+		echo ${GREEN}"Audio output Analog Raspberry PI 3,5mm and Bluetoothe receiver (ALSA:pulse)"${NC}
 	fi
 else
 	sed -i 's/id="audiooutput.audiodevice">ALSA:pulse/id="audiooutput.audiodevice" default="true">PI:HDMI/' /home/pi/.kodi/userdata/guisettings.xml
