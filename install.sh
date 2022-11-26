@@ -69,6 +69,11 @@ apt install -y python-pip
 echo ${GREEN}"OK"${NC}
 echo
 #
+echo ${BWhite}"install python3-pip"${NC}
+apt install -y python3-pip
+echo ${GREEN}"OK"${NC}
+echo
+#
 echo ${BWhite}"Install python-can"${NC}
 pip install python-can
 echo ${GREEN}"OK"${NC}
