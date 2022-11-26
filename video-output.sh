@@ -6,7 +6,7 @@ if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 
 if (systemctl -q is-active kodi.service); then
-	echo ${BWhite}"stop kodi (10sec.)"${NC}
+	echo ${BWhite}"Stop kodi (10sec.)"${NC}
 	systemctl stop kodi.service
 	sleep 10
 elif (systemctl -q is-active kodi.service); then
