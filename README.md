@@ -13,7 +13,9 @@
 
 `cd /tmp`
 `rm main.zip`
-`rm rnspi-install-main`  
+
+`rm rnspi-install-main`
+
 `wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip`  
 `unzip main.zip`  
 `cd rnspi-install-main`  
