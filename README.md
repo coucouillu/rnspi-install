@@ -3,19 +3,14 @@
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnse.png)
 
 
-1. Записать на sd-карту с образом Raspbian Buster Lite
-2. Cкопировать `skin.rnsd-main.zip` или `skin.rnse-main.zip` на sd-карту в /boot/
-
 ### Auto Install
 
-1. Записать на sd-карту с образом Raspbian Buster Lite
-2. Cкопировать `skin.rnsd-main.zip` или `skin.rnse-main.zip` на sd-карту в /boot/
+1. Write to SD card with Raspbian Buster Lite image
+2. Copy `skin.rnsd-main.zip` or `skin.rnse-main.zip` to sd card in /boot/
 
-`cd /tmp`
-`rm main.zip`
-
-`rm rnspi-install-main`
-
+`cd /tmp`  
+`rm main.zip`  
+`rm rnspi-install-main`  
 `wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip`  
 `unzip main.zip`  
 `cd rnspi-install-main`  
