@@ -1,4 +1,4 @@
-## Установка ПО для Audi Navigation Plus RNS-D и RNS-E (RNSPI)
+## Software installation for Audi Navigation Plus RNS-D and RNS-E (RNSPI)
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnsd.png)
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnse.png)
 
@@ -13,6 +13,7 @@
 
 `cd /tmp`
 `rm main.zip`
+`rm rnspi-install-main`  
 `wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip`  
 `unzip main.zip`  
 `cd rnspi-install-main`  
