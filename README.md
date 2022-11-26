@@ -11,7 +11,8 @@
 1. Записать на sd-карту с образом Raspbian Buster Lite
 2. Cкопировать `skin.rnsd-main.zip` или `skin.rnse-main.zip` на sd-карту в /boot/
 
-`cd /tmp`  
+`cd /tmp`
+`rm main.zip`
 `wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip`  
 `unzip main.zip`  
 `cd rnspi-install-main`  
