@@ -5,9 +5,9 @@ if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 
 echo ${BWhite}"Check OS version in Raspbian"${NC}
-if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
-echo ${GREEN}"You using Raspbian Buster"${NC}; else echo ${RED}"Sorry you are not using Raspbian Buster"${NC}; exit 0; fi
-echo
+#if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
+#echo ${GREEN}"You using Raspbian Buster"${NC}; else echo ${RED}"Sorry you are not using Raspbian Buster"${NC}; exit 0; fi
+#echo
 ####
 
 echo ${BWhite}"Сhecking the internet connection"${NC}
