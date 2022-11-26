@@ -6,7 +6,7 @@ if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 
 # OVERLAY FS SSH
-echo ${BWhite}"OVERLAY FS SSH"${NC}
+echo ${BWhite}"Install overlay FS SSH"${NC}
 if grep -Fxq '# ADD OVERLAY FS' '/usr/bin/raspi-config'
 then
 	sed -i '/do_overlayfs() {/,/}/ s/RET=$1/RET=0/' /usr/bin/raspi-config
