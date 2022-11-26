@@ -6,7 +6,7 @@ if
 
 echo ${BWhite}"Check OS version in Raspbian"${NC}
 #if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
-#echo ${GREEN}"You using Raspbian Buster"${NC}; else echo ${RED}"Sorry you are not using Raspbian Buster"${NC}; exit 0; fi
+#echo ${GREEN}"You're using Raspbian Buster"${NC}; else echo ${RED}"You're not using Raspbian Buster. Installation aborted."${NC}; exit 0; fi
 #echo
 ####
 
@@ -58,27 +58,27 @@ echo
 sed -i '/service.xbmc.versioncheck/d' /usr/share/kodi/system/addon-manifest.xml
 echo ${GREEN}"Disable service.xbmc.versioncheck"${NC}
 echo
-#
-echo ${BWhite}"install can-utils"${NC}
+# install can-utils
+echo ${BWhite}"Install can-utils"${NC}
 apt install -y can-utils
 echo ${GREEN}"OK"${NC}
 echo
-#
-echo ${BWhite}"install python-pip"${NC}
+# install python-pip
+echo ${BWhite}"Install python-pip"${NC}
 apt install -y python-pip
 echo ${GREEN}"OK"${NC}
 echo
-#
-echo ${BWhite}"install python3-pip"${NC}
+# install python3-pip
+echo ${BWhite}"Install python3-pip"${NC}
 apt install -y python3-pip
 echo ${GREEN}"OK"${NC}
 echo
-#
+# install python-can
 echo ${BWhite}"Install python-can"${NC}
 pip install python-can
 echo ${GREEN}"OK"${NC}
 echo
-#
+# add CAN0 interfaces in upstart
 echo ${BWhite}"Add CAN0 interfaces in upstart"${NC}
 if grep -Fxq 'auto can0' '/etc/network/interfaces'
 then
@@ -94,13 +94,13 @@ EOF
 	echo ${GREEN}"OK"${NC}
 fi
 echo
-#
-# echo ${BWhite}"install usbmount"${NC}
+# install usbmount
+# echo ${BWhite}"Install usbmount"${NC}
 # apt install -y usbmount
 # sed -i 's/PrivateMounts=yes/PrivateMounts=no/' /lib/systemd/system/systemd-udevd.service
 # sed -i 's/FS_MOUNTOPTIONS=""/FS_MOUNTOPTIONS="-fstype=vfat,iocharset=utf8,gid=root,dmask=0002,fmask=0002"/' /etc/usbmount/usbmount.conf
-#
-echo ${BWhite}"install samba"${NC}
+# install samba
+echo ${BWhite}"Install samba"${NC}
 echo "samba-common samba-common/workgroup string  WORKGROUP" | sudo debconf-set-selections
 echo "samba-common samba-common/dhcp boolean true" | sudo debconf-set-selections
 echo "samba-common samba-common/do_debconf boolean true" | sudo debconf-set-selections
@@ -126,10 +126,9 @@ EOF
 fi
 echo
 
-
-#### EDIT /BOOT/CONFIG.TXT
+# EDIT /BOOT/CONFIG.TXT
 echo ${BWhite}"EDIT /BOOT/CONFIG.TXT"${NC}
-# Enable MCP2515 CanBus
+# Enable MCP2515 CanBus in /boot/config.txt
 if grep -Fxq 'dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25' '/boot/config.txt'; then
 	echo ${GREEN}"Enable MCP2515 CanBus"${NC}
 else
@@ -166,7 +165,7 @@ EOF
 fi
 echo
 
-echo ${BBlue}"Installing components"${NC}
+echo ${BBlue}"Install components"${NC}
 sh install-bluetoothe.sh
 sh video-output.sh
 sh install-skin.sh
@@ -176,12 +175,12 @@ sh install_overlayfs.sh
 echo
 
 # automount usb
-echo ${BWhite}"install automount usb"${NC}
+echo ${BWhite}"Install automount usb"${NC}
 cd udev-media-automount
 sudo make install
 echo ${GREEN}"OK"${NC}
 echo
-#
+# Reboot System Now
 echo -n ${BWhite}"Reboot System Now ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
