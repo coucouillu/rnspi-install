@@ -6,7 +6,7 @@ if
 
 echo ${BWhite}"Check OS version in Raspbian"${NC}
 if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
-echo ${GREEN}"You using Raspbian Buster"${NC}; else echo ${RED}"You are not using Raspbian Buster"${NC}; exit 0; fi
+echo ${GREEN}"You using Raspbian Buster"${NC}; else echo ${RED}"Sorry you are not using Raspbian Buster"${NC}; exit 0; fi
 echo
 ####
 
