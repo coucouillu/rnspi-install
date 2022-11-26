@@ -72,7 +72,7 @@ EOF
 	fi
 # install skin.rnse
 elif [ -e /boot/skin.rnse-main.zip ] ; then
-	echo ${BWhite}"Install or SKIN.RNSE"${NC}
+	echo ${BWhite}"Install SKIN.RNSE"${NC}
 	unzip /boot/skin.rnse-main.zip -d /tmp/ > /dev/null 2>&1
 	mv /tmp/skin.rnse-main /tmp/skin.rnse
 	rm -r /home/pi/.kodi/addons/skin.rnse
