@@ -22,14 +22,13 @@
 `sudo bluetoothctl`  
 `scan on`
 
-находим свой телефон
-`pair 5C:10:C5:E0:94:A6`  
-
+Find your phone through Bluetooth device (B8:27:EB:D4:8B:D7)
+`pair D4:11:A3:A0:C1:96`
+ 
 Request PIN code  
 [agent] Enter PIN code: `1234`  
 
 `exit`
-
 
 
 ## Manual Install
