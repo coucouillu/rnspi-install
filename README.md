@@ -5,7 +5,7 @@
 
 ### Auto Install
 
-1. Write to SD card with Raspbian Buster Lite image
+1. Write to SD card with Raspbian Buster Lite [image](https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-07-12/)
 2. Copy `skin.rnsd-main.zip` or `skin.rnse-main.zip` to sd card in /boot/
 
 `cd /tmp`  
