@@ -3,37 +3,59 @@
 ![prototype scheme](https://github.com/maltsevvv/rnspi-install/blob/main/img/rnse.png)
 
 
-### Auto Install
 
-1. Write to SD card with Raspbian Buster Lite [image](https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-07-12/)
-2. Copy `skin.rnsd-main.zip` or `skin.rnse-main.zip` to sd card in /boot/
+## Auto Install
 
-`cd /tmp`  
-`rm main.zip`  
-`rm rnspi-install-main`  
-`wget -q https://github.com/coucouillu/rnspi-install/archive/main.zip`  
-`unzip main.zip`  
-`cd rnspi-install-main`  
-`sudo sh install.sh`  
+1. Write to SD card with Raspbian Buster Lite
+https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-07-12/
+
+Copy to sd card in /boot/ `skin.rnsd-main.zip` or `skin.rnse-main.zip`
+
+Insert SD card into Raspberry and connect MCP2515 canbus module
+
+Connect to Raspberry via SSH
+login: `pi`
+password: `rpi` (or yours. Password input is not shown)
 
 
+```
+cd /tmp
+wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip
+unzip main.zip
+cd rnspi-install-main
+sudo sh install.sh
+``` 
 
-#### Если используете USB Bluetoothe модуль, то его необходимо подключить вручную
+#### If you are using a USB Bluetooth module, you must connect it manually
+
 `sudo bluetoothctl`  
+
 `scan on`
 
-Find your phone through Bluetooth device (B8:27:EB:D4:8B:D7)
+*Find your phone*
+
 `pair D4:11:A3:A0:C1:96`
  
-Request PIN code  
-[agent] Enter PIN code: `1234`  
+`Request PIN code`
+`[agent] Enter PIN code:1234`  
 
 `exit`
 
-
 ## Manual Install
 #### edit /boot/config.txt  
-`sudo nano /boot/config.txt`
+```
+sudo nano /boot/config.txt
+```
+
+
+*old parameter from maltsevvv before change in 2023*
+```
+# HDMI to VGA adapter
+hdmi_group=1
+hdmi_mode=6
+```
+
+*insert*
 ```
 # HDMI to VGA adapter for RNS
 hdmi_force_hotplug=1
@@ -58,7 +80,9 @@ start_x=1
 ```
 
 #### UPDATE
-`sudo apt update`
+```
+sudo apt update
+```
 #### DISABLE LOGGING
 `sudo nano /etc/rsyslog.conf`
 ```
@@ -66,8 +90,14 @@ start_x=1
 #module(load="imklog") # provides kernel logging support
 ```
 #### INSATALL KODI:
-`sudo apt install kodi`  
-`sudo nano /etc/systemd/system/kodi.service`
+```
+sudo apt install -y kodi
+```
+
+```
+sudo nano /etc/systemd/system/kodi.service
+```
+
 ```
 [Unit]
 Description = Kodi Media Center
@@ -81,9 +111,11 @@ RestartSec = 15
 [Install]
 WantedBy = multi-user.target
 ```
-`sudo systemctl start kodi.service`  
-`sudo systemctl enable kodi.service`
 
+```
+sudo systemctl enable kodi.service
+sudo systemctl start kodi.service
+```
 
 #### Создаем каталоги для хранения файлов
 `sudo mkdir /home/pi/movies /home/pi/music /home/pi/mults`  
