@@ -7,7 +7,7 @@ if
 echo
 ####
 
-echo -n ${BWhite}"INSTALL BLUETOOTHE RECIEVER (TEST) ? yes / no "${NC}
+echo -n ${BWhite}"Install Bluetooth Reciever (TEST) ? yes / no "${NC}
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
 	hostnamectl set-hostname --pretty "rns"
