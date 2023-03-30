@@ -82,7 +82,7 @@ elif [ -e /boot/skin.rnse-main.zip ] ; then
 	echo ${GREEN}"SKIN.RNSE INSTALLED BY DEFAULT"${NC}
 	echo
 # install tvtuner for rnsd
-	echo -n ${BWhite}"EMULATE TV-TUNER FOR RNSE ? yes / no "${NC}
+	echo -n ${BWhite}"Emulate TV-TUNER for RNSE ? yes / no "${NC}
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		cat <<'EOF' > /etc/systemd/system/tvtuner.service
@@ -96,7 +96,7 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 		systemctl enable tvtuner.service
-		echo ${GREEN}"TV-TUNER FOR RNSE INSTALLED"${NC}
+		echo ${GREEN}"TV-TUNER for RNSE installed"${NC}
 	else
 		systemctl stop tvtuner.service
 		systemctl disable tvtuner.service
