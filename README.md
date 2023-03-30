@@ -20,7 +20,7 @@ password: `rpi` (or yours. Password input is not shown)
 
 ```
 cd /tmp
-wget -q https://github.com/maltsevvv/rnspi-install/archive/main.zip
+wget -q https://github.com/coucouillu/rnspi-install/archive/main.zip
 unzip main.zip
 cd rnspi-install-main
 sudo sh install.sh
