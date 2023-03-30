@@ -29,13 +29,13 @@ else
 	exit 0
 fi
 
-echo ${BWhite}"update system"${NC}
+echo ${BWhite}"Update system"${NC}
 apt update -y
 apt upgrade -y
 echo
 ####
 
-echo ${BWhite}"install kodi"${NC}
+echo ${BWhite}"Install KODI"${NC}
 apt install kodi -y
 cat <<'EOF' > /etc/systemd/system/kodi.service
 [Unit]
@@ -59,7 +59,7 @@ sed -i '/service.xbmc.versioncheck/d' /usr/share/kodi/system/addon-manifest.xml
 echo ${GREEN}"Disable service.xbmc.versioncheck"${NC}
 echo
 # install can-utils
-echo ${BWhite}"Install can-utils"${NC}
+echo ${BWhite}"Install CAN-utils"${NC}
 apt install -y can-utils
 echo ${GREEN}"OK"${NC}
 echo
