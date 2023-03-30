@@ -4,13 +4,13 @@ BWhite='\033[1;37m'; BBlue='\033[1;34m'; RED='\033[0;31m'; GREEN='\033[0;32m'; N
 if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 
-echo ${BWhite}"Check OS version in Raspbian"${NC}
+echo ${BWhite}"Check OS version in Raspbian [SKIPPED BY COUCOUILLU]"${NC}
 #if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
 #echo ${GREEN}"You're using Raspbian Buster"${NC}; else echo ${RED}"You're not using Raspbian Buster. Installation aborted."${NC}; exit 0; fi
 #echo
 ####
 
-echo ${BWhite}"Сhecking the internet connection"${NC}
+echo ${BWhite}"Сhecking the internet connection [SKIPPED BY COUCOUILLU]"${NC}
 #echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
 #[ $? -eq 0 ]
 #if [ $? -eq 0 ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"NOT internet connection"${NC}; exit 0; fi
