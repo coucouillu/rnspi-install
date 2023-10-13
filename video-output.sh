@@ -28,13 +28,15 @@ if [ "$answer" != "${answer#[Y|y]}" ]; then
 		echo
 	else
 		cat <<'EOF' >> /boot/config.txt
-# HDMI to VGA adapter for RNS
+# HDMI to VGA adapter for RNSE BY BRYCE
 hdmi_ignore_edid=0xa5000080
 hdmi_group=2
 hdmi_mode=87
-hdmi_timings 800 0 51 44 121 460 0 10 9 14 0 0 0 32 1 16000000 3
+##### ##### hdmi_timings 800 0 51 44 121 460 0 10 9 14 0 0 0 32 1 16000000 3
+hdmi_timings 800 0 40 44 150 548 0 15 9 16 0 0 0 32 1 17000000 1
 framebuffer_width=400
-framebuffer_height=230
+##### ##### framebuffer_height=230
+framebuffer_height=240
 EOF
 		sed -i 's/#disable_overscan=1/disable_overscan=1/' /boot/config.txt
 		sed -i 's/#hdmi_force_hotplug=1/hdmi_force_hotplug=1/' /boot/config.txt
