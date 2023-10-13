@@ -38,10 +38,13 @@ echo
 		cp /tmp/skin.rnsd -r /home/pi/kodi/addons/
 		
 		
-	elif [ -e /home/pi/skin.rnse.zip ]; then
+	##### ##### elif [ -e /home/pi/skin.rnse.zip ]; then
+ 	elif [ -e /home/pi/skin.*rns*.zip ]; then
 		echo ${GREEN}"found skin.rnse"${NC}
-		unzip ~/skin.rnse-main.zip -d /tmp/
-		mv /tmp/skin.rnse-main /tmp/skin.rnse
+		##### ##### unzip ~/skin.rnse-main.zip -d /tmp/
+  		unzip ~/skin.*rns*.zip -d /tmp/
+		##### ##### mv /tmp/skin.rnse-main /tmp/skin.rnse
+  		mv /tmp/skin.*rns* /tmp/skin.rnse
 		rm -r /home/pi/.kodi/addons/skin.rnse
 		cp /tmp/skin.rnse -r /home/pi/kodi/addons/
 	fi	
