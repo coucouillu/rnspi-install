@@ -168,7 +168,7 @@ echo
 echo ${BBlue}"Install components"${NC}
 sh install-bluetoothe.sh
 sh video-output.sh
-sh install-skin.sh
+sh install-skin2.sh
 sh enable-hifiberry.sh
 sh settings-kodi.sh
 sh install_overlayfs.sh
