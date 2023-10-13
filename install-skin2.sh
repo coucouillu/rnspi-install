@@ -1,7 +1,7 @@
 ##############################################
 #             INSTALL SKIN RNSE              #
 ##############################################
-#if [ -e /boot/skin.rnse*.zip ]; then
+##### ##### if [ -e /boot/skin.rnse*.zip ]; then
 if [ -e /home/pi/skin.rnse*.zip ]; then
 	rm -r /home/pi/.kodi/addons/skin.*rns*
 	unzip /home/pi/skin.rnse*.zip -d /home/pi/.kodi/addons/ > /dev/null 2>&1
