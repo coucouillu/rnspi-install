@@ -5,16 +5,16 @@ if
 [ $(id -u) -ne 0 ]; then echo "Please run as root"; exit 1; fi
 
 echo ${BWhite}"Check OS version in Raspbian [SKIPPED BY COUCOUILLU]"${NC}
-#if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
-#echo ${GREEN}"You're using Raspbian Buster"${NC}; else echo ${RED}"You're not using Raspbian Buster. Installation aborted."${NC}; exit 0; fi
-#echo
+##### ##### if grep -Fxq 'VERSION="10 (buster)"' '/etc/os-release'; then
+##### ##### echo ${GREEN}"You're using Raspbian Buster"${NC}; else echo ${RED}"You're not using Raspbian Buster. Installation aborted."${NC}; exit 0; fi
+##### ##### echo
 ####
 
 echo ${BWhite}"Сhecking the internet connection [SKIPPED BY COUCOUILLU]"${NC}
-#echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
-#[ $? -eq 0 ]
-#if [ $? -eq 0 ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"NOT internet connection"${NC}; exit 0; fi
-#echo
+##### ##### echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+##### ##### [ $? -eq 0 ]
+##### ##### if [ $? -eq 0 ]; then echo ${GREEN}"OK"${NC}; else echo ${RED}"NOT internet connection"${NC}; exit 0; fi
+##### ##### echo
 ####
 
 echo ${BWhite}"Check file on SD card in /boot/ SKIN.RNSD or SKIN.RNSE"${NC}
@@ -31,8 +31,8 @@ else
 fi
 
 echo ${BWhite}"Update system"${NC}
-apt update -y
-apt upgrade -y
+##### ##### apt update -y
+##### ##### apt upgrade -y
 echo
 ####
 
