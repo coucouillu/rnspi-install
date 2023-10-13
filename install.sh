@@ -20,7 +20,8 @@ echo ${BWhite}"Сhecking the internet connection [SKIPPED BY COUCOUILLU]"${NC}
 echo ${BWhite}"Check file on SD card in /boot/ SKIN.RNSD or SKIN.RNSE"${NC}
 if [ -e /boot/skin.rnsd-main.zip ]; then
 	echo ${GREEN}"FOUND SKIN.RNS-D"${NC}
-elif [ -e /boot/skin.rnse-main.zip ]; then
+#elif [ -e /boot/skin.rnse-main.zip ]; then
+elif [ -e /home/pi/skin.*rns*.zip ]; then
 	echo ${GREEN}"FOUND SKIN.RNS-E"${NC}
 else 
 	echo ${RED}"SKIN not found"${NC}
