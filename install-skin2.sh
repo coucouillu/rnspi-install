@@ -2,14 +2,14 @@
 #             INSTALL SKIN RNSE              #
 ##############################################
 ##### ##### if [ -e /boot/skin.rnse*.zip ]; then
-if [ -e /home/pi/skin.rnse*.zip ]; then
+if [ -e /boot/skin.*rns*.zip ]; then
 	rm -r /home/pi/.kodi/addons/skin.*rns*
-	unzip /home/pi/skin.rnse*.zip -d /home/pi/.kodi/addons/ > /dev/null 2>&1
+	unzip /boot/skin.*rns*.zip -d /home/pi/.kodi/addons/ > /dev/null 2>&1
 	sed -i -e '$i \  <addon optional="true">skin.rnse</addon>' /usr/share/kodi/system/addon-manifest.xml
 	sed -i -e 's/lookandfeel.skin" default="true">skin.estuary/lookandfeel.skin">skin.rnse/' /home/pi/.kodi/userdata/guisettings.xml
 	sed -i -e 's/skin.rnsd/skin.rnse/' /home/pi/.kodi/userdata/guisettings.xml
 else
-	whiptail --title "ERROR SKIN RNS-D or RNS-E" --msgbox "NOT found skin on SD card in /boot/ \nskin.rnsd-*.zip or skin.rnse-*.zip" 10 60
+	whiptail --title "ERROR SKIN RNS-D or RNS-E" --msgbox "NOT found skin on SD card in /boot/ \nskin.*rns*.zip" 10 60
 fi
 ####
 echo "---------------------------------------------------------"
