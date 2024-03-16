@@ -21,6 +21,8 @@ password: `rpi` (or yours. Password input is not shown)
 ```
 cd /tmp
 wget -q -N https://github.com/coucouillu/rnspi-install/archive/main.zip
+https://raw.githubusercontent.com/coucouillu/rnspi-install/main/main.zip
+https://raw.githubusercontent.com/coucouillu/rnspi-install/main.zip
 rm -r rnspi-install-main 
 unzip main.zip
 cd rnspi-install-main
